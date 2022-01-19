@@ -1,6 +1,9 @@
 import "./navbar.css";
+import { Link } from "react-router-dom";
 
 const NavBar = () => {
+  const user = false;
+
   return (
     <div className="navbar">
       <div className="navleft">
@@ -11,19 +14,56 @@ const NavBar = () => {
       </div>
       <div className="navCenter">
         <ul className="navlist">
-          <li className="navlistItem">HOME</li>
-          <li className="navlistItem">ABOUT</li>
-          <li className="navlistItem">CONTACT</li>
-          <li className="navlistItem">WRITE</li>
-          <li className="navlistItem">LOGOUT</li>
+          <li className="navlistItem">
+            <Link to="/" className="link">
+              HOME
+            </Link>
+          </li>
+          <li className="navlistItem">
+            <Link to="/about" className="link">
+              ABOUT
+            </Link>
+          </li>
+          <li className="navlistItem">
+            <Link to="/about" className="link">
+              CONTACT
+            </Link>
+          </li>
+          <li className="navlistItem">
+            <Link to="/about" className="link">
+              WRITE
+            </Link>
+          </li>
+          <li className="navlistItem">
+            {user && (
+              <Link to="/about" className="link">
+                LOGOUT
+              </Link>
+            )}
+          </li>
         </ul>
       </div>
       <div className="navright">
-        <img
-          className="navbarimage"
-          src="https://images.pexels.com/photos/9078210/pexels-photo-9078210.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-          alt="profilepcture"
-        />
+        {user ? (
+          <img
+            className="navbarimage"
+            src="https://images.pexels.com/photos/9078210/pexels-photo-9078210.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+            alt="profilepcture"
+          />
+        ) : (
+          <ul className="navlist">
+            <li className="navlistItem">
+              <Link className="link" to="/login">
+                LOGIN
+              </Link>
+            </li>
+            <li className="navlistItem">
+              <Link className="link" to="/register">
+                REGISTER
+              </Link>
+            </li>
+          </ul>
+        )}
         <i className=" navSearchIcon fa fa-search" aria-hidden="true"></i>
       </div>
     </div>
