@@ -1,16 +1,29 @@
 import "./singleblogpost.css";
+import { Link, useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
-const singleBlogpost = () => {
+const SingleBlogpost = () => {
+  const location = useLocation();
+  const path = location.pathname.split("/")[2];
+  const [post, setPost] = useState({});
+
+  useEffect(() => {
+    const getPosts = async () => {
+      const res = await axios.get("/posts/" + path);
+      setPost(res.data);
+      console.log(res.data);
+    };
+    getPosts();
+  }, [path]);
   return (
     <div className="singleblogpost">
       <div className="singleblogpost-wrapper">
-        <img
-          className="singleblogpostimg"
-          src="https://images.pexels.com/photos/226424/pexels-photo-226424.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-          alt=""
-        />
+        {post.photo && (
+          <img className="singleblogpostimg" src={post.photo} alt="" />
+        )}
         <h1 className="singleblogposttitle">
-          Lorem ipsum dolor sit amet.
+          {post.title}
           <div className="singleblogEdit">
             <i
               className="singleblogicon fa fa-pencil-square-o"
@@ -21,41 +34,20 @@ const singleBlogpost = () => {
         </h1>
         <div className="singleblogInfo">
           <span className="postAuthor">
-            Author: <b>Jowie</b>
+            Author:
+            <Link to={`/?user=${post.username}`} className="link">
+              <b>{post.username}</b>
+            </Link>
           </span>
 
-          <span className="singlepostdate">1 hour ago</span>
+          <span className="singlepostdate">
+            {new Date(post.createdAt).toDateString()}
+          </span>
         </div>
-        <p className="singleblogDesc">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis quos
-          fugiat, non repellendus aut ullam minus aliquam similique beatae
-          architecto cupiditate animi aspernatur et? Cupiditate consectetur
-          quisquam placeat ipsam nostrum. Lorem ipsum dolor sit amet consectetur
-          adipisicing elit. Debitis quos fugiat, non repellendus aut ullam minus
-          aliquam similique beatae architecto cupiditate animi aspernatur et?
-          Cupiditate consectetur quisquam placeat ipsam nostrum. Lorem ipsum
-          dolor sit amet consectetur adipisicing elit. Debitis quos fugiat, non
-          repellendus aut ullam minus aliquam similique beatae architecto
-          cupiditate animi aspernatur et? Cupiditate consectetur quisquam
-          placeat ipsam nostrum. Lorem ipsum dolor sit amet consectetur
-          adipisicing elit. Debitis quos fugiat, non repellendus aut ullam minus
-          aliquam similique beatae architecto cupiditate animi aspernatur et?
-          Cupiditate consectetur quisquam placeat ipsam nostrum. Lorem ipsum
-          dolor sit amet consectetur adipisicing elit. Debitis quos fugiat, non
-          repellendus aut ullam minus aliquam similique beatae architecto
-          cupiditate animi aspernatur et? Cupiditate consectetur quisquam
-          placeat ipsam nostrum. Lorem ipsum dolor sit amet consectetur
-          adipisicing elit. Debitis quos fugiat, non repellendus aut ullam minus
-          aliquam similique beatae architecto cupiditate animi aspernatur et?
-          Cupiditate consectetur quisquam placeat ipsam nostrum. Lorem ipsum
-          dolor sit amet consectetur adipisicing elit. Debitis quos fugiat, non
-          repellendus aut ullam minus aliquam similique beatae architecto
-          cupiditate animi aspernatur et? Cupiditate consectetur quisquam
-          placeat ipsam nostrum.
-        </p>
+        <p className="singleblogDesc">{post.desc}</p>
       </div>
     </div>
   );
 };
 
-export default singleBlogpost;
+export default SingleBlogpost;
