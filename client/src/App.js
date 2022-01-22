@@ -7,10 +7,12 @@ import Blogpost from "./pages/blogpost/Blogpost";
 import Home from "./pages/home/Home";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Login from "./pages/Login/Login";
+import { useContext } from "react";
+import { Context } from "./context/Context";
 
 
 function App() {
-  const user = false
+  const {user}= useContext(Context)
   return (
     <Router>
       <NavBar />
