@@ -4,6 +4,8 @@
 .singleblogpost-wrapper {
   padding: 20px;
   padding-right: 0;
+  display: flex;
+  flex-direction: column;
 }
 .singleblogpostimg {
   width: 100%;
@@ -15,8 +17,20 @@
   font-family: "Lora", serif;
   text-align: center;
   margin: 10px;
-  font-style: 25px;
+  font-size: 25px;
 }
+.singleblogposttitleInput {
+  font-family: "Lora", serif;
+  text-align: center;
+  border: none;
+  margin: 10px;
+  font-size: 25px;
+  color: gray;
+}
+.singleblogposttitleInput:focus {
+  outline: none;
+}
+
 .singleblogEdit {
   float: right;
   font-size: 16px;
@@ -43,8 +57,29 @@
   font-size: 18px;
   line-height: 25px;
 }
+.singleblogDescInput {
+  border: none;
+  color: #666;
+  font-size: 18px;
+  line-height: 25px;
+}
+.singleblogDescInput:focus {
+  outline: none;
+}
 .singleblogDesc::first-letter {
   margin-left: 20px;
   font-size: 30px;
   font-weight: 600;
+}
+.singleblogButton {
+  width: 100px;
+  background-color: teal;
+  color: white;
+  border-radius: 8px;
+  padding: 10px;
+  border: none;
+  margin-top: 20px;
+
+  cursor: pointer;
+  align-self: flex-end;
 }
