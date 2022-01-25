@@ -5,7 +5,7 @@ import Setting from "./pages/setting/Setting";
 import CreatePost from "./pages/createPost/CreatePost";
 import Blogpost from "./pages/blogpost/Blogpost";
 import Home from "./pages/home/Home";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import Login from "./pages/Login/Login";
 import { useContext } from "react";
 import { Context } from "./context/Context";
