@@ -52,3 +52,37 @@
   border-radius: 10px;
   object-fit: cover;
 }
+
+.createPostCats {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+
+  position: absolute;
+  top: 60vh;
+  left: 30%;
+}
+.catsinputs {
+  display: flex;
+  justify-content: space-between;
+}
+.catsinputs > input {
+  width: 100px;
+
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid teal;
+  background-color: aliceblue;
+  color: black;
+}
+/* .catsinputs > input:hover {
+  background-color: rgba(18, 201, 201, 0.57);
+  color: white;
+} */
+.createPostCats > span {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  margin-top: 15px;
+}

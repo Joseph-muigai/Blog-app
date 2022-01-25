@@ -41,9 +41,16 @@
 }
 .sidebarlistitem {
   display: inline-block;
-  width: 50%;
+  width: 30%;
+  margin: 5px;
   cursor: pointer;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid teal;
+  background-color: aliceblue;
+  color: black;
 }
+
 .sidebarSocial {
   margin-top: 15px;
 

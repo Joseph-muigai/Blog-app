@@ -37,7 +37,6 @@ const Sidebar = () => {
                 <li className="sidebarlistitem" key={c._id}>
                   {c.name}
                 </li>
-                ;
               </Link>
             );
           })}

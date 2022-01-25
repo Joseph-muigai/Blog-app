@@ -15,6 +15,7 @@ const CreatePost = () => {
       username: user.username,
       title,
       desc,
+      categories: cates,
     };
     if (file) {
       const data = new FormData();
@@ -31,6 +32,10 @@ const CreatePost = () => {
       window.location.replace("/post/" + res.data._id);
     } catch (error) {}
   };
+  // const handleCat = () => {
+
+  // }
+  const cates = [];
 
   return (
     <div className="createPost">
@@ -63,6 +68,47 @@ const CreatePost = () => {
             className="writeinput writeText"
             onChange={(e) => setDesc(e.target.value)}
           ></textarea>
+          <div className="createPostCats">
+            <span>Select the categories that best fits your blog post</span>
+            <div className="catsinputs">
+              <input
+                onClick={(e) => {
+                  cates.push(e.target.value);
+                }}
+                type="button"
+                value="music"
+              />
+              <input
+                onClick={(e) => {
+                  cates.push(e.target.value);
+                }}
+                type="button"
+                value="life"
+              />
+              <input
+                onClick={(e) => {
+                  cates.push(e.target.value);
+                }}
+                type="button"
+                value="entertainment"
+              />
+              <input
+                onClick={(e) => {
+                  cates.push(e.target.value);
+                }}
+                type="button"
+                value="sports"
+              />
+              <input
+                onClick={(e) => {
+                  cates.push(e.target.value);
+                }}
+                type="button"
+                value="tech"
+              />
+            </div>
+          </div>
+
           <button className="writeSubmit" type="submit">
             Publish
           </button>
